@@ -1,0 +1,138 @@
+:root {
+  --verde-pastel: #cdcea4;
+  --beige: #f9f6ef;
+  --verde-oscuro: #4e7d5e;
+  --sombra: 0 2px 12px #0002;
+  --beige-claro: #fffdf8;
+  --verde-hover: #a3d9b1;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, var(--beige-claro) 0%, var(--beige) 100%);
+  color: #2d3a2e;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 2.5rem 0 1rem 0;
+  color: var(--verde-oscuro);
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.desc-p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 2.5rem;
+}
+
+.categorias-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+}
+
+.categoria {
+  background: var(--verde-pastel);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px #b7eacb33;
+  border: 2px solid #e5e5d7;
+  width: 320px;
+  max-width: 95vw;
+  padding: 2.2rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s, box-shadow 0.18s;
+  text-align: center;
+}
+.categoria:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 16px rgba(255, 255, 255, 0.6);
+  filter: brightness(1.1);
+  background: var(--verde-hover);
+}
+
+.categoria h2 {
+  color: var(--verde-oscuro);
+  font-size: 1.6rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+
+.categoria p {
+  font-size: 1.08rem;
+  margin-bottom: 1.5rem;
+  color: #2d3a2e;
+}
+
+.cat-btn {
+  background: var(--verde-oscuro);
+  color: #fff;
+  border: none;
+  border-radius: 1.5em;
+  padding: 0.7em 2.2em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+  margin-top: auto;
+  letter-spacing: 1px;
+}
+.cat-btn:hover {
+  background: #2d3a2e;
+  color: var(--verde-pastel);
+  transform: scale(1.07);
+}
+
+@media (max-width: 900px) {
+  .categorias-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0.5rem;
+  }
+  .categoria {
+    width: 95vw;
+    max-width: 400px;
+  }
+}
+/* Agrega esto a tu estilos.css para el fondo con huellitas marrones */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f9f6ef; /* beige */
+  background-image: url(imagenesmimiasite/09ee1d7390e151f576a8926a1736640b.jpg);
+  background-repeat: repeat;
+  background-size: 90px 90px;
+  color: #2d3a2e;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Center the main title inside the welcome card */
+.welcome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Add a background box for the main title */
+.welcome-card .main-title {
+  background: #e6f4e6; /* Light green background */
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+

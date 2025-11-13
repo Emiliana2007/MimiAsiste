@@ -1,0 +1,542 @@
+:root {
+  --verde-pastel: #cdcea4;
+  --beige: #f9f6ef;
+  --verde-oscuro: #4e7d5e;
+  --verde-lima: #bfff00;
+  --sombra: 0 2px 12px #0002;
+  --beige-claro: #fffdf8;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, var(--beige-claro) 0%, var(--beige) 100%);
+  color: #2d3a2e;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.emergencia-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--verde-oscuro);
+  margin: 2.5rem 0 2rem 0;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.emergencia-lista {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.emergencia-card {
+  background: var(--verde-pastel);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #98aca033;
+  /* Animación de borde verde lima */
+  border: 4px solid;
+  border-image: repeating-linear-gradient(
+    120deg,
+    var(--verde-lima),
+    var(--verde-lima) 10px,
+    transparent 10px,
+    transparent 20px
+  ) 30;
+  animation: border-move 2s linear infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  gap: 1.2rem;
+  transition: box-shadow 0.18s, transform 0.18s;
+  position: relative;
+  min-height: 340px;
+}
+@keyframes border-move {
+  0% {
+    border-image-source: repeating-linear-gradient(
+      120deg,
+      var(--verde-lima),
+      var(--verde-lima) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+  100% {
+    border-image-source: repeating-linear-gradient(
+      480deg,
+      var(--verde-lima),
+      var(--verde-lima) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+}
+.emergencia-card:hover {
+  box-shadow: 0 8px 32px #b7eacb66;
+  transform: scale(1.03);
+}
+
+.emergencia-img {
+  width: 92%;
+  max-width: 420px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.1rem;
+  border: 3px solid var(--verde-oscuro);
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  display: block;
+}
+
+.emergencia-info {
+  text-align: center;
+  width: 100%;
+}
+
+.emergencia-nombre {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 0.3rem;
+}
+
+.emergencia-direccion {
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+
+.emergencia-tel {
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+
+.emergencia-24hs {
+  background: #4e7d5e;
+  color: #fff;
+  border-radius: 0.7em;
+  padding: 0.1em 0.7em;
+  font-size: 0.95em;
+  margin-left: 0.5em;
+  font-weight: 600;
+}
+
+.emergencia-extra {
+  font-size: 1rem;
+  color: #6b6b4e;
+  margin-top: 0.2rem;
+}
+
+
+
+
+
+
+/* ...existing code... */
+
+/* botón horario (similar a ver-ubicacion) */
+.horario-btn {
+  display: none; /* aparece en hover de la tarjeta */
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background: #4e7d5e;
+  color: #fff;
+  border: none;
+  border-radius: 1.2em;
+  padding: 0.5em 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+  z-index: 3;
+}
+.emergencia-card:hover .horario-btn { display: block; animation: fadeInBtn .28s ease; }
+@media (max-width:700px){ .horario-btn { display: block; right: 50%; transform: translateX(50%); } }
+.horario-btn:hover{ background:#2d3a2e; transform: scale(1.05); }
+
+
+
+/* Modal horario */
+.horario-modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.horario-modal {
+  background: #fff;
+  color: #163326;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 18px 18px 14px 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+  text-align: left;
+  position: relative;
+}
+.horario-modal h3 {
+  margin: 0 0 8px 0;
+  color: var(--verde-oscuro);
+  font-size: 1.15rem;
+}
+.horario-list {
+  margin: 8px 0 0 16px;
+  padding: 0;
+  list-style: disc;
+  color: #2f4b3f;
+  line-height: 1.5;
+  font-size: 0.995rem;
+}
+.horario-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.horario-close:hover { background: var(--verde-oscuro); color: #fff; }
+
+/* keep consistency with existing fadeInBtn */
+@keyframes fadeInBtn {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ensure emergencia-card has position:relative (if not already) */
+.emergencia-card { position: relative; }
+
+/* ...existing code... */
+
+
+/* ...existing code... */
+
+.emergencia-lista {
+  width: 100%;
+  max-width: 1000px; /* más ancho para que las tarjetas ocupen espacio */
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+/* Tarjetas más grandes y alargadas - diseño horizontal en pantallas grandes */
+.emergencia-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--verde-pastel);
+  border-radius: 18px;
+  padding: 2.2rem;
+  border: 4px solid;
+  border-image: repeating-linear-gradient(
+    120deg,
+    var(--verde-lima, #bfff00),
+    var(--verde-lima, #bfff00) 10px,
+    transparent 10px,
+    transparent 20px
+  ) 30;
+  box-shadow: 0 8px 40px rgba(17,49,39,0.08);
+  min-height: 340px; /* más alto */
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  overflow: hidden;
+}
+.emergencia-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 60px rgba(17,49,39,0.14);
+}
+
+/* Imagen rectangular a la izquierda */
+.emergencia-img {
+  width: 360px;        /* image más grande */
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--verde-oscuro);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+/* Info a la derecha, alineada a la izquierda */
+.emergencia-info {
+  flex: 1 1 auto;
+  text-align: left;
+  padding-right: 1rem;
+}
+
+/* Ajustes tipográficos para ocupar el espacio */
+.emergencia-nombre { font-size: 1.4rem; margin-bottom: .35rem; }
+.emergencia-direccion, .emergencia-tel, .emergencia-extra {
+  font-size: 1.05rem;
+  margin-bottom: .28rem;
+}
+
+/* Botón horario en esquina inferior derecha de la tarjeta */
+.horario-btn {
+  display: none;
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  background: var(--verde-oscuro);
+  color: #fff;
+  border: none;
+  border-radius: 1.2em;
+  padding: 0.6em 1.1em;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform .16s, background .16s;
+  z-index: 4;
+}
+.emergencia-card:hover .horario-btn { display: inline-block; animation: fadeInBtn .28s ease; }
+
+/* Responsive: en pantallas pequeñas las tarjetas vuelven a columna */
+@media (max-width: 900px) {
+  .emergencia-lista { padding: 1rem; gap: 1.6rem; }
+  .emergencia-card {
+    flex-direction: column;
+    padding: 1.2rem;
+    min-height: auto;
+  }
+  .emergencia-img {
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+  }
+  .emergencia-info { text-align: center; padding: 0; }
+  .horario-btn { position: static; display: block; margin: 0.8rem auto 0; transform: none; }
+}
+
+/* ...existing code... */
+
+
+
+/* ...existing code... */
+
+/* Nav superior - verde, minimalista y con logo */
+.site-nav {
+  width: 100%;
+  background: linear-gradient(90deg, rgba(78,125,94,0.08), rgba(78,125,94,0.02));
+  backdrop-filter: blur(4px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(78,125,94,0.06);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.8rem 18px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+/* Brand: logo + nombre */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.nav-logo {
+  color: var(--verde-oscuro);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: color .15s;
+}
+.nav-logo:hover { color: var(--verde-pastel); }
+
+/* Links */
+.nav-links {
+  display: flex;
+  gap: 0.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-item {
+  color: #2d4a38;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: background .15s, color .15s, transform .12s;
+}
+
+.nav-item:hover {
+  background: var(--verde-pastel);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.nav-item.active {
+  background: var(--verde-oscuro);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(78,125,94,0.14);
+}
+
+/* Toggle button (mobile) */
+.nav-toggle {
+  display: none;
+  background: var(--verde-oscuro);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(78,125,94,0.12);
+  transition: background .15s;
+}
+.nav-toggle:hover { background: #2d3a2e; }
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 18px;
+    background: rgba(255,255,255,0.98);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    flex-direction: column;
+    min-width: 180px;
+    padding: 10px;
+    display: none;
+  }
+  
+  .nav-links.open { display: flex; }
+  
+  .nav-item {
+    padding: 10px 12px;
+    color: #1c372f;
+  }
+}
+
+/* Footer (igual que sobremosotros) */
+.site-footer{
+  flex-shrink: 0;
+  margin-top: 28px;
+  background: var(--verde-oscuro);
+  width: 100%;
+  box-sizing: border-box;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 1.6rem 1rem;
+}
+
+.footer-inner {
+  max-width: var(--max-w, 1000px);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-creador{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.footer-foto{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--verde-pastel, #cdcea4);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+.footer-nombre{
+  color:#fff;
+  font-weight:800;
+  font-size:1rem;
+}
+
+.footer-role{
+  color:#e6f5e6;
+  font-size:.95rem;
+}
+
+.footer-redes {
+  display:flex;
+  gap:.9rem;
+  margin-top:.15rem;
+}
+
+.footer-redes a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1.05rem;
+}
+
+.footer-redes a:hover{ color: var(--verde-pastel, #cdcea4); }
+
+.footer-inst{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#fff;
+  font-weight:700;
+}
+
+.footer-logo{
+  width:64px;
+  height:64px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px solid var(--verde-pastel, #cdcea4);
+  background:#fff;
+  padding:6px;
+}
+
+/* Responsive: apilar contenido en pantallas pequeñas */
+@media (max-width:700px){
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+  .footer-inst { margin-top: 0.6rem; }
+}

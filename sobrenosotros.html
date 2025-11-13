@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sobre Nosotros — MimiAsiste</title>
+  <link rel="stylesheet" href="sobrenosotros.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAV: barra superior -->
+  <nav class="site-nav" role="navigation">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="imagenesmimiasite/miminav.png" alt="Logo MimiAsiste" class="nav-brand-logo">
+        <a href="index.html" class="nav-logo">MimiAsiste</a>
+      </div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item">Inicio</a></li>
+        <li><a href="emergencia.html" class="nav-item">Veterinarios</a></li>
+        <li><a href="sobrenosotros.html" class="nav-item active">Sobre nosotros</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <h1 class="hero-title">MimiAsiste</h1>
+      <p class="hero-sub">Apoyo, información y servicios veterinarios cerca de ti.</p>
+    </header>
+
+    <!-- Cuadro: ¿Quién es Mimi? -->
+    <section class="card quien">
+      <h2>¿Quién es Mimi?</h2>
+      <p class="muted">Mimi es nuestra pequeña gatita que falleció, esta página es en honor a ella. ¡Esperamos te sirva de ayuda!</p>
+
+      <div class="quien-grid">
+        <div class="quien-text">
+          <p>Mimi era una gatita pequeña llena de energía y vida, tras falta de atención veterinaria falleció sin poder recibir la asistencia necesaria, esperamos que con nuestra página logres encontrar aquello que ella tanto necesitó y no pudo recibir.</p>
+        </div>
+
+        <div class="quien-photos">
+          <div class="photo-item">
+            <img src="imagenesmimiasite/MIMIIII.jpg" alt="Mimi foto 1">
+          </div>
+          <div class="photo-item">
+            <img src="imagenesmimiasite/FOTODEMIMIPARAPAG.jpeg" alt="Mimi foto 2">
+          </div>
+          <div class="photo-item">
+            <img src="imagenesmimiasite/FOTOSDEMIMI.jpeg" alt="Mimi foto 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Misión -->
+    <section class="card mission">
+      <h2>Misión</h2>
+      <p class="muted">Nuestra misión es conectar a las familias con servicios veterinarios confiables y de emergencia, ofreciendo información clara y accesible.</p>
+      <div class="spotlight">
+        <img src="imagenesmimiasite/MimiAsiste.png" alt="Misión" class="spot-img">
+        <div class="spot-text">
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="card team">
+      <h2>Equipo</h2>
+      <p class="muted">Profesionales y colaboradores</p>
+      <div class="team-grid">
+        <article class="member">
+          <img src="imagenesmimiasite/FOTODECREADORNACHO.png" alt="Nombre" class="member-photo">
+          <div class="member-info">
+            <strong>Gordillo Emiliana</strong>
+            <div class="role">Técnico en Informática Personal y Profesional. </div>
+          </div>
+        </article>
+
+        <article class="member">
+          <img src="imagenesmimiasite/CREADORAEMUUU.png" alt="Nombre" class="member-photo">
+          <div class="member-info">
+            <strong>Galarza Ignacio</strong>
+            <div class="role">Técnico en Informática Personal y Profesional. </div>
+        
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="card contact">
+      <h2>Contacto y colaboración</h2>
+      <p class="muted">¿Querés colaborar, sugerir o actualizar datos? Escribinos.</p>
+      <form class="contact-form" action="#" method="post">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" rows="4" placeholder="Mensaje (breve)"></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-creador">
+        <img src="imagenesmimiasite/logoemii.png" alt="Tu nombre" class="footer-foto">
+        <div class="footer-nombre">Emily</div>
+        <div class="footer-role">Creador — MimiAsiste</div>
+        <div class="footer-redes">
+        
+        </div>
+      </div>
+      <div class="footer-inner">
+      <div class="footer-creador">
+        <img src="imagenesmimiasite/nachoo.png" alt="Tu nombre" class="footer-foto">
+        <div class="footer-nombre">Ignacio</div>
+        <div class="footer-role">Creador — MimiAsiste</div>
+        <div class="footer-redes">
+        </div>
+      </div>
+      <div class="footer-inst">
+        <img src="imagenesmimiasite/epet.jpg" alt="Logo Institución" class="footer-logo">
+        <div>EPETN1</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Activar enlace nav según página actual
+    (function(){
+      const links = document.querySelectorAll('.nav-item');
+      const currentPath = window.location.pathname;
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(currentPath.split('/').pop())) {
+          link.classList.add('active');
+        }
+      });
+    })();
+
+    // Toggle del menú móvil
+    (function(){
+      const toggle = document.getElementById('nav-toggle');
+      const links = document.getElementById('nav-links');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', () => {
+        links.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!links.classList.contains('open')) return;
+        if (e.target === toggle || links.contains(e.target)) return;
+        links.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>
